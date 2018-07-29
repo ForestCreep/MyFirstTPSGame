@@ -17,14 +17,19 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        MoveControl();
+    }
+
+    private void MoveControl()
+    {
         var h = Input.GetAxis("Horizontal");
         var v = Input.GetAxis("Vertical");
 
         _animator.SetFloat("SpeedX", h * kSpeedX);// A D
         _animator.SetFloat("SpeedZ", v * kSpeedZ);// W S
 
-        // 跳
-        if (Input.GetKey(KeyCode.Space)&& Input.GetKey(KeyCode.W))
+        // 前跳
+        if (Input.GetKey(KeyCode.Space) && Input.GetKey(KeyCode.W))
         {
             _animator.SetBool("JumpForward", true);
         }
