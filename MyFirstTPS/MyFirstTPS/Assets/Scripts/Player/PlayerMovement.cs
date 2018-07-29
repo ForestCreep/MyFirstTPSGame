@@ -22,5 +22,24 @@ public class PlayerMovement : MonoBehaviour
 
         _animator.SetFloat("SpeedX", h * kSpeedX);// A D
         _animator.SetFloat("SpeedZ", v * kSpeedZ);// W S
+
+        // 跳
+        if (Input.GetKey(KeyCode.Space)&& Input.GetKey(KeyCode.W))
+        {
+            _animator.SetBool("JumpForward", true);
+        }
+        else
+        {
+            _animator.SetBool("JumpForward", false);
+        }
+
+        if (Input.GetKey(KeyCode.Space) && Input.GetKey(KeyCode.S))
+        {
+            _animator.SetBool("JumpBackward", true);
+        }
+        else
+        {
+            _animator.SetBool("JumpBackward", false);
+        }
     }
 }
