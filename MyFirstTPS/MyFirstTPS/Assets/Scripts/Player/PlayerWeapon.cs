@@ -5,18 +5,32 @@ using UnityEngine;
 public class PlayerWeapon : MonoBehaviour
 {
     public GameObject[] weapons;
+    private Animator _animator;
     private GameObject _currentGun;
 
     // Use this for initialization
     void Start()
     {
         Debug.Log(Quaternion.identity);
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //ShootReaction();
+    }
 
+    private void ShootReaction()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            _animator.SetTrigger("Shoot");
+        }
+        else
+        {
+            _animator.ResetTrigger("Shoot");
+        }
     }
 
     private void OnTriggerEnter(Collider other)

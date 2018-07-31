@@ -28,23 +28,43 @@ public class PlayerMovement : MonoBehaviour
         _animator.SetFloat("SpeedX", h * kSpeedX);// A D
         _animator.SetFloat("SpeedZ", v * kSpeedZ);// W S
 
+        #region 必须长按才能跳跃
+        // 前跳
+        //if (Input.GetKey(KeyCode.Space) && Input.GetKey(KeyCode.W))
+        //{
+        //    _animator.SetBool("JumpForward", true);
+        //}
+        //else
+        //{
+        //    _animator.SetBool("JumpForward", false);
+        //}
+
+        //if (Input.GetKey(KeyCode.Space) && Input.GetKey(KeyCode.S))
+        //{
+        //    _animator.SetBool("JumpBackward", true);
+        //}
+        //else
+        //{
+        //    _animator.SetBool("JumpBackward", false);
+        //} 
+        #endregion
+
         // 前跳
         if (Input.GetKey(KeyCode.Space) && Input.GetKey(KeyCode.W))
         {
-            _animator.SetBool("JumpForward", true);
+            _animator.SetTrigger("JumpForward");
         }
-        else
+        else// 恢复时间过长手动设置trigger为false
         {
-            _animator.SetBool("JumpForward", false);
+            _animator.ResetTrigger("JumpForward");
         }
-
         if (Input.GetKey(KeyCode.Space) && Input.GetKey(KeyCode.S))
         {
-            _animator.SetBool("JumpBackward", true);
+            _animator.SetTrigger("JumpBackward");
         }
         else
         {
-            _animator.SetBool("JumpBackward", false);
+            _animator.ResetTrigger("JumpBackward");
         }
     }
 }
