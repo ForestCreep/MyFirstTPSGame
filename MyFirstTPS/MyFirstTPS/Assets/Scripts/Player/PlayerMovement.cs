@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Animator _animator;
-    public float kSpeedX = 1.76f;
-    public float kSpeedZ = 2.87f;
+    public float kSpeedX = 3.18f;
+    public float kSpeedZ = 3.04f;
 
     // Use this for initialization
     void Start()
