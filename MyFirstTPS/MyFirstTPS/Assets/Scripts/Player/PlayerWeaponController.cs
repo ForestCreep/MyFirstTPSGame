@@ -37,21 +37,22 @@ public class PlayerWeaponController : MonoBehaviour
         Destroy(other.gameObject);
         Debug.Log(other.name);
         // 先播放拾取动画
-        // 每次拾取枪时判断手中是否持枪，并将新生成的枪生成于合适的位置
-        if (_currentGun != null)
-        {
-            _currentGun.SetActive(false);
-            // 设置新生成的枪的类型，位置，旋转
-            var newWeapon = Instantiate(_currentGun, transform.position + Vector3.forward * 3 + new Vector3(0, 0.1f, 0), Quaternion.identity);
-            newWeapon.name = _currentGun.name;
-            _currentGun = null;
-            newWeapon.SetActive(true);
-        }
         // 拾取枪支判断
         foreach (var weapon in weapons)
         {
             if (weapon.name == other.name)
             {
+                if (_currentGun)
+                {
+                    // 每次拾取枪时判断手中是否持枪，并将新生成的枪生成于合适的位置
+                    _currentGun.SetActive(false);
+                    // 设置新生成的枪的类型，位置，旋转
+                    var newWeapon = Instantiate(_currentGun, transform.position + Vector3.forward * 3 + new Vector3(0, 0.1f, 0), Quaternion.identity);
+                    newWeapon.name = _currentGun.name;
+                    _currentGun = null;
+                    newWeapon.SetActive(true);
+                }
+
                 _currentGun = weapon;
                 weapon.SetActive(true);
             }
