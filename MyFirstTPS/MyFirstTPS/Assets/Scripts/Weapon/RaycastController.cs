@@ -22,12 +22,11 @@ public class RaycastController : MonoBehaviour
 
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Debug.DrawRay(ray.origin, ray.direction);
-        
-        if(Physics.Raycast(ray, out hit))
+        Debug.DrawRay(ray.origin, ray.direction * 10);
+
+        if (Physics.Raycast(ray, out hit))
         {
             Debug.Log(hit.collider.name);
         }
-        //Debug.DrawRay(Camera.main.transform.position,Screen.);
     }
 }

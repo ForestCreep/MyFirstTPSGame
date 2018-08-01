@@ -7,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     private Animator _animator;
     public float kSpeedX = 3.18f;
     public float kSpeedZ = 3.04f;
+    private float kWalkSpeedX = 2.0f;
+    private float kWalkSpeedY = 2.0f;
 
     // Use this for initialization
     void Start()
@@ -25,8 +27,16 @@ public class PlayerMovement : MonoBehaviour
         var h = Input.GetAxis("Horizontal");
         var v = Input.GetAxis("Vertical");
 
-        _animator.SetFloat("SpeedX", h * kSpeedX);// A D
-        _animator.SetFloat("SpeedZ", v * kSpeedZ);// W S
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.LeftShift))
+        {
+            _animator.SetFloat("SpeedX", h * kSpeedX);// A D
+            _animator.SetFloat("SpeedZ", v * kSpeedZ);// W S
+        }
+        else
+        {
+            _animator.SetFloat("SpeedX", h * kWalkSpeedX);// A D
+            _animator.SetFloat("SpeedZ", v * kWalkSpeedY);// W S
+        }
 
         #region 必须长按才能跳跃
         // 前跳
