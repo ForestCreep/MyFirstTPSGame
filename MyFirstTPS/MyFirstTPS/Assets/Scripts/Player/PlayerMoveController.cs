@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMoveController : MonoBehaviour
 {
     private Animator _animator;
     public float kSpeedX = 3.18f;
