@@ -30,10 +30,13 @@ public class PlayerWeaponController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // 销毁地上的枪支
+        if (other.name == "Terrain")
+        {
+            return;
+        }
         Destroy(other.gameObject);
         Debug.Log(other.name);
         // 先播放拾取动画
-
         // 每次拾取枪时判断手中是否持枪，并将新生成的枪生成于合适的位置
         if (_currentGun != null)
         {
