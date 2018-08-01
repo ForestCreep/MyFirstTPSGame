@@ -64,5 +64,6 @@ public class PlayerWeapon : MonoBehaviour
         }
 
         Destroy(other.gameObject);
+        //DestroyImmediate(other.gameObject);
     }
 }

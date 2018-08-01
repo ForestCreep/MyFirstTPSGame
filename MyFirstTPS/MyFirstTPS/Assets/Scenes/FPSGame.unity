@@ -200,7 +200,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &63928522
 CapsuleCollider:
@@ -1506,6 +1506,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNeck: {fileID: 1037157551}
   player: {fileID: 63928520}
+  maxAngle: 50
+  minAngle: -50
   sensitivityY: 180
   sensitivityX: 180
 --- !u!114 &965073910

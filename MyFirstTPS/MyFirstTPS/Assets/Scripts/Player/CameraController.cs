@@ -48,11 +48,7 @@ public class CameraController : MonoBehaviour
         }
 
         // 当旋转达到仰视上限时，使偏移量为0
-        if (cameraX > maxAngle && offsetY < 0)
-        {
-            offsetY = 0;
-        }
-        else if (cameraX < minAngle && offsetY > 0)
+        if (cameraX > maxAngle && offsetY < 0 || cameraX < minAngle && offsetY > 0)
         {
             offsetY = 0;
         }
