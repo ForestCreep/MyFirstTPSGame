@@ -5,6 +5,10 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public float shotInterval = 0;
+    public int id;
+    public string weaponName;
+    public int baseCapacity;
+    public int expandedCapacity;
 
     // Use this for initialization
     void Start()

@@ -6,6 +6,7 @@ public class PlayerWeaponController : MonoBehaviour
 {
     public GameObject[] weapons;// 武器列表
     public float shootFlashDisappearTime = 0.05f;// 枪口火光消失时间
+    private Animator _animator;// 人物动画
     private GameObject _currentGun;// 当前手持武器
     private float _lastShootTime = 0;// 上一次射击时间
     private Transform shootFlash;// 射击火光位置
@@ -16,6 +17,7 @@ public class PlayerWeaponController : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -23,7 +25,14 @@ public class PlayerWeaponController : MonoBehaviour
     {
         if (_currentGun && Input.GetButton("Fire1"))
         {
-            ShootRay();
+            Shoot();
+        }
+        else
+        {
+            if(_animator)
+            {
+                _animator.ResetTrigger("IsShoot");
+            }
         }
     }
 
@@ -63,25 +72,23 @@ public class PlayerWeaponController : MonoBehaviour
         }
     }
 
-    private void ShootRay()
+    private void Shoot()
     {
         //var ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Debug.DrawRay(ray.origin, ray.direction * 20);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
+        var shootSoundSource = _currentGun.GetComponent<AudioSource>();
+        if (shootSoundSource)
         {
-            Debug.Log(hit.collider.name);
-            var shootSoundSource = _currentGun.GetComponent<AudioSource>();
-            if (shootSoundSource)
+            _currentWeapon = _currentGun.GetComponent<Weapon>();
+            if (_currentWeapon && Time.time - _lastShootTime >= _currentWeapon.shotInterval)
             {
-                _currentWeapon = _currentGun.GetComponent<Weapon>();
-                if (_currentWeapon && Time.time - _lastShootTime >= _currentWeapon.shotInterval)
+                //Debug.Log(Time.time);
+                if(_animator)
                 {
-                    Debug.Log(Time.time);
                     shootSoundSource.Play();
                     _lastShootTime = Time.time;
-
+                    _animator.SetTrigger("IsShoot");
                     shootFlash = _currentGun.transform.Find("MuzzleFlash");
                     if (shootFlash)
                     {
@@ -91,6 +98,11 @@ public class PlayerWeaponController : MonoBehaviour
                     }
                 }
             }
+        }
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            Debug.Log(hit.collider.name);
         }
     }
 
