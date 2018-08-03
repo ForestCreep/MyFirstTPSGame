@@ -9,6 +9,7 @@ public class Weapon : MonoBehaviour
     public string weaponName;
     public int baseCapacity;
     public int expandedCapacity;
+    public float DamageValue = 0;
 
     // Use this for initialization
     void Start()

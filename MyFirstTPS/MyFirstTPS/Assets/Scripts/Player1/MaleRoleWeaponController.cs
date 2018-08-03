@@ -120,7 +120,9 @@ public class MaleRoleWeaponController : MonoBehaviour
                     {
                         Debug.Log(hit.collider.name);
                         // 贴合弹孔
-                        
+
+                        // 击中敌人使其掉血
+                        hit.collider.SendMessage("ReceiveDamage", _currentWeapon.DamageValue, SendMessageOptions.DontRequireReceiver);
                     }
                 }
             }
