@@ -81,7 +81,7 @@ public class PlayerWeaponController : MonoBehaviour
         if (shootSoundSource)
         {
             _currentWeapon = _currentGun.GetComponent<Weapon>();
-            if (_currentWeapon && Time.time - _lastShootTime >= _currentWeapon.ShotInterval)
+            if (_currentWeapon && Time.time - _lastShootTime >= _currentWeapon.shotInterval)
             {
                 //Debug.Log(Time.time);
                 if(_animator)

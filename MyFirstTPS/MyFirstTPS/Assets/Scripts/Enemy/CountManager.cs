@@ -5,10 +5,8 @@ using UnityEngine;
 public class CountManager : MonoBehaviour
 {
     public static CountManager Instance;// 唯一实例 
-    public static float SumDamageEnemyToPlayer;
-    public static float SumDamagePlayerToEnemy;
-    public static float PlayerHp = 100;
-    public static float EnemyHp = 100;
+    private float _sumDamageEnemyToPlayer;
+    public float _sumDamagePlayerToEnemy;
 
     private CountManager()
     {
@@ -27,23 +25,13 @@ public class CountManager : MonoBehaviour
 
     }
 
-    public void SetPlayerHp(float value)
-    {
-        PlayerHp = value;
-    }
-
-    public void SetEnemyHp(float value)
-    {
-        EnemyHp = value;
-    }
-
     public void OnDamageEnemyToPlayer(float value)
     {
-        SumDamageEnemyToPlayer += value;
+        _sumDamageEnemyToPlayer += value;
     }
 
     public void OnDamagePlayerToEnemy(float value)
     {
-        SumDamagePlayerToEnemy += value;
+        _sumDamagePlayerToEnemy += value;
     }
 }

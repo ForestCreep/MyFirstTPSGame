@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class MaleRoleWeaponController : MonoBehaviour
 {
-    public GameObject[] Weapons;// 武器列表
-    public float ShootFlashDisappearTime = 0.05f;// 枪口火光消失时间
+    public GameObject[] weapons;// 武器列表
+    public float shootFlashDisappearTime = 0.05f;// 枪口火光消失时间
     private Animator _animator;// 人物动画
     private GameObject _currentGun;// 当前手持武器
     private float _lastShootTime = 0;// 上一次射击时间
-    private Transform _shootFlash;// 射击火光位置
+    private Transform shootFlash;// 射击火光位置
     private Weapon _currentWeapon;// 当前武器类
-    public GameObject BulletHole;// 弹孔
+    public GameObject bulletHole;// 弹孔
 
     // Use this for initialization
     void Start()
@@ -45,7 +45,7 @@ public class MaleRoleWeaponController : MonoBehaviour
 
     private void PickUpWeapon(Collider other)
     {
-        foreach (var weapon in Weapons)
+        foreach (var weapon in weapons)
         {
             if (weapon.name == other.name)
             {
@@ -94,12 +94,12 @@ public class MaleRoleWeaponController : MonoBehaviour
     {
         //var ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Debug.DrawRay(ray.origin, ray.direction * 200);
+        Debug.DrawRay(ray.origin, ray.direction * 20);
         var shootSoundSource = _currentGun.GetComponent<AudioSource>();
         if (shootSoundSource)
         {
             _currentWeapon = _currentGun.GetComponent<Weapon>();
-            if (_currentWeapon && Time.time - _lastShootTime >= _currentWeapon.ShotInterval)
+            if (_currentWeapon && Time.time - _lastShootTime >= _currentWeapon.shotInterval)
             {
                 //Debug.Log(Time.time);
                 if (_animator)
@@ -107,10 +107,10 @@ public class MaleRoleWeaponController : MonoBehaviour
                     shootSoundSource.Play();
                     _lastShootTime = Time.time;
                     //_animator.SetTrigger("IsShoot");
-                    _shootFlash = _currentGun.transform.Find("MuzzleFlash");
-                    if (_shootFlash)
+                    shootFlash = _currentGun.transform.Find("MuzzleFlash");
+                    if (shootFlash)
                     {
-                        _shootFlash.gameObject.SetActive(true);
+                        shootFlash.gameObject.SetActive(true);
                         StartCoroutine("HideShootFlash");
                         //Invoke("HideShootFlash", shootFlashDisappearTime);
                     }
@@ -118,7 +118,7 @@ public class MaleRoleWeaponController : MonoBehaviour
                     RaycastHit hit;
                     if (Physics.Raycast(ray, out hit))
                     {
-                        //Debug.Log(hit.collider.name);
+                        Debug.Log(hit.collider.name);
                         // 贴合弹孔
 
                         // 击中敌人使其掉血
@@ -131,7 +131,7 @@ public class MaleRoleWeaponController : MonoBehaviour
 
     private IEnumerator HideShootFlash()
     {
-        yield return new WaitForSeconds(ShootFlashDisappearTime);
-        _shootFlash.gameObject.SetActive(false);
+        yield return new WaitForSeconds(shootFlashDisappearTime);
+        shootFlash.gameObject.SetActive(false);
     }
 }

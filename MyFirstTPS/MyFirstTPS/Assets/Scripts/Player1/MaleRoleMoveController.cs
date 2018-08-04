@@ -7,15 +7,15 @@ public class MaleRoleMoveController : MonoBehaviour
     private Animator _animator;
 
     // 有枪时的移动参数
-    public float XRunWithWeapon = 3.18f;
-    public float YRunWithWeaon = 3.04f;
-    public float XWalkWithWeapon = 2.0f;
-    public float YWalkWithWeapon = 2.0f;
+    public float xRunWithWeapon = 3.18f;
+    public float yRunWithWeaon = 3.04f;
+    public float xWalkWithWeapon = 2.0f;
+    public float yWalkWithWeapon = 2.0f;
     // 无枪时的移动参数
-    public float XRunWithoutWeapon = 4.5f;
-    public float YRunWithoutWeapon = 4.5f;
-    public float XWalkWithoutWeapon = 2;
-    public float YWalkWithoutWeapon = 2;
+    public float xRunWithoutWeapon = 4.5f;
+    public float yRunWithoutWeapon = 4.5f;
+    public float xWalkWithoutWeapon = 2;
+    public float yWalkWithoutWeapon = 2;
 
     // 键盘 wasd 的偏移量
     private float h;
@@ -54,13 +54,13 @@ public class MaleRoleMoveController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.LeftShift))
         {
-            _animator.SetFloat("SpeedXWithWeapon", h * XRunWithWeapon);// A D
-            _animator.SetFloat("SpeedZWithWeapon", v * YRunWithWeaon);// W S
+            _animator.SetFloat("SpeedXWithWeapon", h * xRunWithWeapon);// A D
+            _animator.SetFloat("SpeedZWithWeapon", v * yRunWithWeaon);// W S
         }
         else
         {
-            _animator.SetFloat("SpeedXWithWeapon", h * XWalkWithWeapon);// A D
-            _animator.SetFloat("SpeedZWithWeapon", v * YWalkWithWeapon);// W S
+            _animator.SetFloat("SpeedXWithWeapon", h * xWalkWithWeapon);// A D
+            _animator.SetFloat("SpeedZWithWeapon", v * yWalkWithWeapon);// W S
         }
     }
 
@@ -92,13 +92,13 @@ public class MaleRoleMoveController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.LeftShift))
         {
-            _animator.SetFloat("SpeedXWithoutWeapon", h * XRunWithoutWeapon);// A D
-            _animator.SetFloat("SpeedZWithoutWeapon", v * YRunWithoutWeapon);// W S
+            _animator.SetFloat("SpeedXWithoutWeapon", h * xRunWithoutWeapon);// A D
+            _animator.SetFloat("SpeedZWithoutWeapon", v * yRunWithoutWeapon);// W S
         }
         else
         {
-            _animator.SetFloat("SpeedXWithoutWeapon", h * XWalkWithoutWeapon);// A D
-            _animator.SetFloat("SpeedZWithoutWeapon", v * YWalkWithoutWeapon);// W S
+            _animator.SetFloat("SpeedXWithoutWeapon", h * xWalkWithoutWeapon);// A D
+            _animator.SetFloat("SpeedZWithoutWeapon", v * yWalkWithoutWeapon);// W S
         }
     }
 
