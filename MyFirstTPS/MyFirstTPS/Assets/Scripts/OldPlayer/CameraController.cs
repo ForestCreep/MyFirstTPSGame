@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour
     public float maxAngle = 50;
     public float minAngle = -50;
 
+
     //public Transform playerSpine;
     public float sensitivityY = 180;
     public float sensitivityX = 180;
