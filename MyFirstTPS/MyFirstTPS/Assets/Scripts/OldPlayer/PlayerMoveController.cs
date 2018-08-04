@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerMoveController : MonoBehaviour
 {
     private Animator _animator;
-    public float xRunWithWeapon = 3.18f;
-    public float yRunWithWeaon = 3.04f;
-    public float xWalkWithWeapon = 2.0f;
-    public float yWalkWithWeapon = 2.0f;
+    public float XRunWithWeapon = 3.18f;
+    public float YRunWithWeaon = 3.04f;
+    public float XWalkWithWeapon = 2.0f;
+    public float YWalkWithWeapon = 2.0f;
     //public float xRunWithoutWeapon = 1;
     //public float yRunWithoutWeapon = 1;
     //public float xWalkWithoutWeapon = 4;
@@ -33,13 +33,13 @@ public class PlayerMoveController : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.LeftShift))
         {
-            _animator.SetFloat("SpeedX", h * xRunWithWeapon);// A D
-            _animator.SetFloat("SpeedZ", v * yRunWithWeaon);// W S
+            _animator.SetFloat("SpeedX", h * XRunWithWeapon);// A D
+            _animator.SetFloat("SpeedZ", v * YRunWithWeaon);// W S
         }
         else
         {
-            _animator.SetFloat("SpeedX", h * xWalkWithWeapon);// A D
-            _animator.SetFloat("SpeedZ", v * yWalkWithWeapon);// W S
+            _animator.SetFloat("SpeedX", h * XWalkWithWeapon);// A D
+            _animator.SetFloat("SpeedZ", v * YWalkWithWeapon);// W S
         }
 
         #region 必须长按才能跳跃

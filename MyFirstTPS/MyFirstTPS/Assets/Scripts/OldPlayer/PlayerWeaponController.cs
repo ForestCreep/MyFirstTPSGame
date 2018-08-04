@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class PlayerWeaponController : MonoBehaviour
 {
-    public GameObject[] weapons;// 武器列表
-    public float shootFlashDisappearTime = 0.05f;// 枪口火光消失时间
+    public GameObject[] Weapons;// 武器列表
+    public float ShootFlashDisappearTime = 0.05f;// 枪口火光消失时间
     private Animator _animator;// 人物动画
     private GameObject _currentGun;// 当前手持武器
     private float _lastShootTime = 0;// 上一次射击时间
-    private Transform shootFlash;// 射击火光位置
+    private Transform _shootFlash;// 射击火光位置
     private Weapon _currentWeapon;// 当前武器类
 
     // Use this for initialization
@@ -47,7 +47,7 @@ public class PlayerWeaponController : MonoBehaviour
         Debug.Log(other.name);
         // 先播放拾取动画
         // 拾取枪支判断
-        foreach (var weapon in weapons)
+        foreach (var weapon in Weapons)
         {
             if (weapon.name == other.name)
             {
@@ -89,10 +89,10 @@ public class PlayerWeaponController : MonoBehaviour
                     shootSoundSource.Play();
                     _lastShootTime = Time.time;
                     //_animator.SetTrigger("IsShoot");
-                    shootFlash = _currentGun.transform.Find("MuzzleFlash");
-                    if (shootFlash)
+                    _shootFlash = _currentGun.transform.Find("MuzzleFlash");
+                    if (_shootFlash)
                     {
-                        shootFlash.gameObject.SetActive(true);
+                        _shootFlash.gameObject.SetActive(true);
                         StartCoroutine("HideShootFlash");
                         //Invoke("HideShootFlash", shootFlashDisappearTime);
                     }
@@ -108,8 +108,8 @@ public class PlayerWeaponController : MonoBehaviour
 
     private IEnumerator HideShootFlash()
     {
-        yield return new WaitForSeconds(shootFlashDisappearTime);
-        shootFlash.gameObject.SetActive(false);
+        yield return new WaitForSeconds(ShootFlashDisappearTime);
+        _shootFlash.gameObject.SetActive(false);
     }
 
     //private void HideShootFlash()

@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform playerNeck;
-    public Transform player;
-    public float maxAngle = 50;
-    public float minAngle = -50;
-
+    public Transform PlayerNeck;
+    public Transform Player;
+    public float MaxAngle = 50;
+    public float MinAngle = -50;
 
     //public Transform playerSpine;
-    public float sensitivityY = 180;
-    public float sensitivityX = 180;
+    public float SensitivityY = 180;
+    public float SensitivityX = 180;
 
     // Use this for initialization
     void Start()
@@ -49,15 +48,15 @@ public class CameraController : MonoBehaviour
         }
 
         // 当旋转达到仰视上限时，使偏移量为0
-        if (cameraX > maxAngle && offsetY < 0 || cameraX < minAngle && offsetY > 0)
+        if (cameraX > MaxAngle && offsetY < 0 || cameraX < MinAngle && offsetY > 0)
         {
             offsetY = 0;
         }
 
         // 相机绕人物颈部旋转
-        transform.RotateAround(playerNeck.position, transform.right, -offsetY * sensitivityY * Time.deltaTime);
+        transform.RotateAround(PlayerNeck.position, transform.right, -offsetY * SensitivityY * Time.deltaTime);
         // 人物左右旋转
-        player.Rotate(0f, offsetX * sensitivityX * Time.deltaTime, 0f);
+        Player.Rotate(0f, offsetX * SensitivityX * Time.deltaTime, 0f);
     }
 
     private void BodyRotateFromAxisX()

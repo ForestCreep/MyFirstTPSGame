@@ -6,8 +6,8 @@ public class HPAndEnergyController : MonoBehaviour
 {
     public float Hp = 100;
     public float Energy = 0;
-    private float _IncreaseEnergyIntervalTime = 0;
-    private float _IncreaseHpIntervalTime = 0;
+    private float _increaseEnergyIntervalTime = 0;
+    private float _increaseHpIntervalTime = 0;
     private bool _isAlive;
 
     // Use this for initialization
@@ -167,10 +167,10 @@ public class HPAndEnergyController : MonoBehaviour
     {
         if (Energy > 0 && Energy <= 100)
         {
-            _IncreaseHpIntervalTime += Time.deltaTime;
+            _increaseHpIntervalTime += Time.deltaTime;
         }
 
-        if (_IncreaseHpIntervalTime >= 8)
+        if (_increaseHpIntervalTime >= 8)
         {
             if (Energy <= 20)
             {
@@ -189,7 +189,7 @@ public class HPAndEnergyController : MonoBehaviour
                 Hp += 4;
             }
 
-            _IncreaseHpIntervalTime = 0;
+            _increaseHpIntervalTime = 0;
             if (Hp > 100)
             {
                 Hp = 100;
@@ -201,11 +201,11 @@ public class HPAndEnergyController : MonoBehaviour
     {
         if (Energy > 0)
         {
-            _IncreaseEnergyIntervalTime += Time.deltaTime;
-            if (_IncreaseEnergyIntervalTime >= 3)
+            _increaseEnergyIntervalTime += Time.deltaTime;
+            if (_increaseEnergyIntervalTime >= 3)
             {
                 Energy -= 1;
-                _IncreaseEnergyIntervalTime = 0;
+                _increaseEnergyIntervalTime = 0;
             }
         }
     }
