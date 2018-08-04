@@ -295,12 +295,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a926d53972bad8e428f676c7ec83415c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotInterval: 0.09
-  id: 60002
-  weaponName: M416
-  baseCapacity: 30
-  expandedCapacity: 40
-  DamageValue: 0
+  ShotInterval: 0
+  Id: 0
+  WeaponName: 
+  BaseCapacity: 0
+  ExpandedCapacity: 0
+  DamageValue: 30
 --- !u!65 &56148848
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -408,6 +408,93 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &65043715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 65043716}
+  - component: {fileID: 65043718}
+  - component: {fileID: 65043717}
+  - component: {fileID: 65043719}
+  m_Layer: 5
+  m_Name: PlayerHp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &65043716
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 65043715}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1570197566}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -608.35, y: 248.29999}
+  m_SizeDelta: {x: 703.3, y: 116.7}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &65043717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 65043715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 44
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 4
+    m_MaxSize: 44
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &65043718
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 65043715}
+  m_CullTransparentMesh: 0
+--- !u!114 &65043719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 65043715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12c5819c4c27c0a4f913624bf40f4e1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &72656536
 Prefab:
   m_ObjectHideFlags: 0
@@ -499,11 +586,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a926d53972bad8e428f676c7ec83415c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotInterval: 0.09
-  id: 60002
-  weaponName: M416
-  baseCapacity: 30
-  expandedCapacity: 40
+  ShotInterval: 0.08
+  Id: 0
+  WeaponName: M416
+  BaseCapacity: 30
+  ExpandedCapacity: 40
   DamageValue: 30
 --- !u!82 &72656540
 AudioSource:
@@ -612,6 +699,93 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.95610094, y: 0.07808595, z: 0.30181438}
   m_Center: {x: -0.17209803, y: -0.000111706555, z: 0.025879405}
+--- !u!1 &138346640
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 138346641}
+  - component: {fileID: 138346643}
+  - component: {fileID: 138346642}
+  - component: {fileID: 138346644}
+  m_Layer: 5
+  m_Name: PlayerToEnemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &138346641
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 138346640}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1570197566}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -608.3, y: 481.7}
+  m_SizeDelta: {x: 703.3, y: 116.7}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &138346642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 138346640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 44
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 113
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &138346643
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 138346640}
+  m_CullTransparentMesh: 0
+--- !u!114 &138346644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 138346640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e92fcbcc3107848a69c3b65bff17f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &142113269
 GameObject:
   m_ObjectHideFlags: 0
@@ -1055,7 +1229,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400134, guid: 0ecf40b1a826def4e921c3b4065e91c1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -102.38194
+      value: -102.436
       objectReference: {fileID: 0}
     - target: {fileID: 400134, guid: 0ecf40b1a826def4e921c3b4065e91c1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1079,7 +1253,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400134, guid: 0ecf40b1a826def4e921c3b4065e91c1, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 100134, guid: 0ecf40b1a826def4e921c3b4065e91c1, type: 3}
       propertyPath: m_Name
@@ -1170,9 +1344,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c72ec80705bd1e4499751e6fada95eba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1883736760}
+  Target: {fileID: 1883736760}
   Hp: 100
-  revivePoint: {fileID: 340529123}
+  RevivePoint: {fileID: 340529123}
+  MaxShootDistance: 20
+  Weapons:
+  - {fileID: 1936309358}
+  - {fileID: 1464832606}
+  - {fileID: 56148846}
+  - {fileID: 1167471421}
+  - {fileID: 1488749199}
+  ShootFlashDisappearTime: 0.05
 --- !u!4 &340529123 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400134, guid: 0ecf40b1a826def4e921c3b4065e91c1,
@@ -1830,7 +2012,7 @@ GameObject:
   - component: {fileID: 658088242}
   - component: {fileID: 658088241}
   m_Layer: 5
-  m_Name: Image
+  m_Name: SightBead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2762,11 +2944,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a926d53972bad8e428f676c7ec83415c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotInterval: 0.1
-  id: 60001
-  weaponName: AKM
-  baseCapacity: 30
-  expandedCapacity: 40
+  ShotInterval: 0.1
+  Id: 0
+  WeaponName: AKM
+  BaseCapacity: 30
+  ExpandedCapacity: 40
   DamageValue: 50
 --- !u!82 &1003710066
 AudioSource:
@@ -2966,6 +3148,93 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4109276360265964, guid: 6a17287e7f885074b92ecffa6cbe41cc,
     type: 2}
   m_PrefabInternal: {fileID: 1070088411}
+--- !u!1 &1097439098
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1097439099}
+  - component: {fileID: 1097439101}
+  - component: {fileID: 1097439100}
+  - component: {fileID: 1097439102}
+  m_Layer: 5
+  m_Name: EnemyHp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1097439099
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1097439098}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1570197566}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -608.2999, y: 131.6}
+  m_SizeDelta: {x: 703.3, y: 116.7}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1097439100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1097439098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 44
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 4
+    m_MaxSize: 44
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &1097439101
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1097439098}
+  m_CullTransparentMesh: 0
+--- !u!114 &1097439102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1097439098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b479c53c3d05b941b28253c4b2d5d23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1123146504
 Prefab:
   m_ObjectHideFlags: 0
@@ -3258,12 +3527,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a926d53972bad8e428f676c7ec83415c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotInterval: 0.5
-  id: 50002
-  weaponName: SKS
-  baseCapacity: 15
-  expandedCapacity: 20
-  DamageValue: 0
+  ShotInterval: 0
+  Id: 0
+  WeaponName: 
+  BaseCapacity: 0
+  ExpandedCapacity: 0
+  DamageValue: 40
 --- !u!65 &1167471423
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3457,6 +3726,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 658088240}
+  - {fileID: 1570197566}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3777,8 +4047,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1362349910}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 247.94627, y: 102.17194, z: 274.64}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1746631136}
@@ -3786,8 +4056,8 @@ Transform:
   - {fileID: 360245672}
   - {fileID: 515667682}
   - {fileID: 686665726}
-  m_Father: {fileID: 2133456365}
-  m_RootOrder: 1
+  m_Father: {fileID: 1784176134}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1379205095
 GameObject:
@@ -3952,11 +4222,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a926d53972bad8e428f676c7ec83415c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotInterval: 2
-  id: 50003
-  weaponName: M24
-  baseCapacity: 7
-  expandedCapacity: 10
+  ShotInterval: 2
+  Id: 0
+  WeaponName: M24
+  BaseCapacity: 7
+  ExpandedCapacity: 10
   DamageValue: 80
 --- !u!82 &1404451876
 AudioSource:
@@ -4228,12 +4498,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a926d53972bad8e428f676c7ec83415c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotInterval: 2
-  id: 50001
-  weaponName: AWM
-  baseCapacity: 5
-  expandedCapacity: 7
-  DamageValue: 0
+  ShotInterval: 0
+  Id: 0
+  WeaponName: 
+  BaseCapacity: 0
+  ExpandedCapacity: 0
+  DamageValue: 90
 --- !u!65 &1464832608
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4432,12 +4702,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a926d53972bad8e428f676c7ec83415c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotInterval: 2
-  id: 50003
-  weaponName: M24
-  baseCapacity: 7
-  expandedCapacity: 10
-  DamageValue: 0
+  ShotInterval: 0
+  Id: 0
+  WeaponName: 
+  BaseCapacity: 0
+  ExpandedCapacity: 0
+  DamageValue: 80
 --- !u!65 &1488749202
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4617,6 +4887,43 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1551841431}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1570197565
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1570197566}
+  m_Layer: 5
+  m_Name: Texts
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1570197566
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1570197565}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 138346641}
+  - {fileID: 1737042135}
+  - {fileID: 65043716}
+  - {fileID: 1097439099}
+  m_Father: {fileID: 1192988666}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1615885013
 GameObject:
   m_ObjectHideFlags: 0
@@ -5029,6 +5336,93 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1735085431}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1737042134
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1737042135}
+  - component: {fileID: 1737042137}
+  - component: {fileID: 1737042136}
+  - component: {fileID: 1737042138}
+  m_Layer: 5
+  m_Name: EnemyToPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1737042135
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1737042134}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1570197566}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -608.35, y: 365}
+  m_SizeDelta: {x: 703.3, y: 116.7}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1737042136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1737042134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 0
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 44
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 4
+    m_MaxSize: 44
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &1737042137
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1737042134}
+  m_CullTransparentMesh: 0
+--- !u!114 &1737042138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1737042134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d1d1daea0fb6e243a34e7d3252b53a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1744835921
 GameObject:
   m_ObjectHideFlags: 0
@@ -5118,12 +5512,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bef1930060e7794fba70642a5314d88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNeck: {fileID: 2065369324}
-  player: {fileID: 1883736760}
-  maxAngle: 50
-  minAngle: -50
-  sensitivityY: 180
-  sensitivityX: 180
+  PlayerNeck: {fileID: 2065369324}
+  Player: {fileID: 1883736760}
+  MaxAngle: 50
+  MinAngle: -50
+  SensitivityY: 180
+  SensitivityX: 180
 --- !u!1001 &1746631131
 Prefab:
   m_ObjectHideFlags: 0
@@ -5326,6 +5720,7 @@ Transform:
   - {fileID: 2002554220}
   - {fileID: 882006505}
   - {fileID: 808785869}
+  - {fileID: 1362349911}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5340,7 +5735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5cae2d9c25939e41aa87f85783ba3dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnableWeapons:
+  SpawnableWeapons:
   - {fileID: 1746631132}
   - {fileID: 1123146505}
   - {fileID: 360245670}
@@ -5437,11 +5832,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a926d53972bad8e428f676c7ec83415c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotInterval: 0.5
-  id: 50002
-  weaponName: SKS
-  baseCapacity: 15
-  expandedCapacity: 20
+  ShotInterval: 0.3
+  Id: 0
+  WeaponName: SKS
+  BaseCapacity: 15
+  ExpandedCapacity: 20
   DamageValue: 40
 --- !u!82 &1794793910
 AudioSource:
@@ -5566,14 +5961,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0f74c06954ca524381b74187d4a74d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xRunWithWeapon: 5
-  yRunWithWeaon: 5
-  xWalkWithWeapon: 2
-  yWalkWithWeapon: 2
-  xRunWithoutWeapon: 4.5
-  yRunWithoutWeapon: 4.5
-  xWalkWithoutWeapon: 2
-  yWalkWithoutWeapon: 2
+  XRunWithWeapon: 6.43
+  YRunWithWeaon: 9.32
+  XWalkWithWeapon: 2
+  YWalkWithWeapon: 2
+  XRunWithoutWeapon: 4.5
+  YRunWithoutWeapon: 4.5
+  XWalkWithoutWeapon: 2
+  YWalkWithoutWeapon: 2
 --- !u!54 &1803722987
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5613,8 +6008,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd7582e76d4cf1e42bacb484f8a546f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hP: 100
-  energy: 0
+  Hp: 100
+  Energy: 0
 --- !u!114 &1803722990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5626,14 +6021,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb83c45454f98f7488b7dad321cbddf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons:
+  Weapons:
   - {fileID: 1003710064}
   - {fileID: 1922107339}
   - {fileID: 72656538}
   - {fileID: 1794793908}
   - {fileID: 1404451874}
-  shootFlashDisappearTime: 0.05
-  bulletHole: {fileID: 1905139333609472, guid: d9e85a589f98adc45b6dd86a16ae51c8, type: 2}
+  ShootFlashDisappearTime: 0.05
+  BulletHole: {fileID: 0}
 --- !u!1001 &1851007513
 Prefab:
   m_ObjectHideFlags: 0
@@ -5733,7 +6128,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400134, guid: 0ecf40b1a826def4e921c3b4065e91c1, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 100134, guid: 0ecf40b1a826def4e921c3b4065e91c1, type: 3}
       propertyPath: m_Name
@@ -5866,11 +6261,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a926d53972bad8e428f676c7ec83415c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotInterval: 2
-  id: 50001
-  weaponName: AWM
-  baseCapacity: 5
-  expandedCapacity: 7
+  ShotInterval: 2
+  Id: 0
+  WeaponName: AWM
+  BaseCapacity: 5
+  ExpandedCapacity: 7
   DamageValue: 90
 --- !u!82 &1922107341
 AudioSource:
@@ -6221,12 +6616,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a926d53972bad8e428f676c7ec83415c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotInterval: 0.1
-  id: 60001
-  weaponName: AKM
-  baseCapacity: 0
-  expandedCapacity: 0
-  DamageValue: 0
+  ShotInterval: 0
+  Id: 0
+  WeaponName: 
+  BaseCapacity: 0
+  ExpandedCapacity: 0
+  DamageValue: 50
 --- !u!65 &1936309360
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6576,7 +6971,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 666343081}
-  - {fileID: 1362349911}
   - {fileID: 1883736760}
   - {fileID: 340529123}
   m_Father: {fileID: 0}

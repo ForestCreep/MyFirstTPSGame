@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class HPAndEnergyController : MonoBehaviour
 {
-    [SerializeField] private int hP = 100;
-    [SerializeField] private int energy = 0;
+    public float Hp = 100;
+    public float Energy = 0;
     private float _IncreaseEnergyIntervalTime = 0;
     private float _IncreaseHpIntervalTime = 0;
+    private bool _isAlive;
 
     // Use this for initialization
     void Start()
@@ -22,7 +23,7 @@ public class HPAndEnergyController : MonoBehaviour
         IncreaseHPByTime();
         KeyUpdate();
 
-        //test
+        ////test
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
             ReduceHpRandomly();
@@ -61,152 +62,172 @@ public class HPAndEnergyController : MonoBehaviour
 
     private void UseBandage()
     {
-        if (hP >= 75)
+        if (Hp >= 75)
         {
             Debug.Log("生命值大于75时无法使用绷带");
             return;
         }
         else
         {
-            hP += 10;
-            if (hP > 75)
+            Hp += 10;
+            if (Hp > 75)
             {
-                hP = 75;
+                Hp = 75;
             }
         }
     }
 
     private void UseFirstAidKit()
     {
-        if (hP >= 75)
+        if (Hp >= 75)
         {
             Debug.Log("生命值大于等于75时无法使用急救包");
             return;
         }
         else
         {
-            hP = 75;
+            Hp = 75;
         }
     }
 
     private void UseMedicalBox()//使用医疗箱
     {
-        if (hP >= 100)
+        if (Hp >= 100)
         {
             Debug.Log("生命值大于等于100时无法使用医疗箱");
             return;
         }
         else
         {
-            hP = 100;
+            Hp = 100;
         }
     }
 
     private void UseRedBull()
     {
-        if (energy >= 100)
+        if (Energy >= 100)
         {
             Debug.Log("生命值大于等于100时无法使用红牛");
             return;
         }
         else
         {
-            energy += 40;
-            if (energy > 100)
+            Energy += 40;
+            if (Energy > 100)
             {
-                energy = 100;
+                Energy = 100;
             }
         }
     }
 
     private void UseAnodyne()//使用止痛药
     {
-        if (energy >= 100)
+        if (Energy >= 100)
         {
             Debug.Log("生命值大于等于100时无法使用止痛药");
             return;
         }
         else
         {
-            energy += 60;
-            if (energy > 100)
+            Energy += 60;
+            if (Energy > 100)
             {
-                energy = 100;
+                Energy = 100;
             }
         }
     }
 
     private void UseAdrenaline()//使用肾上腺素
     {
-        if (energy >= 100)
+        if (Energy >= 100)
         {
             Debug.Log("生命值大于等于100时无法使用肾上腺素");
             return;
         }
         else
         {
-            energy = 100;
+            Energy = 100;
         }
     }
     #endregion
 
     private void ReduceHpRandomly()
     {
-        if (hP > 0 && hP <= 100)
+        if (Hp > 0 && Hp <= 100)
         {
-            hP -= Random.Range(1, hP);
+            Hp -= Random.Range(1, Hp);
         }
-        if (hP <= 0)
+        if (Hp <= 0)
         {
-            hP = 1;
+            Hp = 1;
         }
     }
 
     private void IncreaseHPByTime()
     {
-        if (energy > 0 && energy <= 100)
+        if (Energy > 0 && Energy <= 100)
         {
             _IncreaseHpIntervalTime += Time.deltaTime;
         }
 
         if (_IncreaseHpIntervalTime >= 8)
         {
-            if (energy <= 20)
+            if (Energy <= 20)
             {
-                hP += 1;
+                Hp += 1;
             }
-            else if (energy <= 60)
+            else if (Energy <= 60)
             {
-                hP += 2;
+                Hp += 2;
             }
-            else if (energy <= 90)
+            else if (Energy <= 90)
             {
-                hP += 3;
+                Hp += 3;
             }
             else
             {
-                hP += 4;
+                Hp += 4;
             }
 
             _IncreaseHpIntervalTime = 0;
-            if (hP > 100)
+            if (Hp > 100)
             {
-                hP = 100;
+                Hp = 100;
             }
         }
     }
 
     private void ReduceEnergyByTime()
     {
-        if (energy > 0)
+        if (Energy > 0)
         {
             _IncreaseEnergyIntervalTime += Time.deltaTime;
             if (_IncreaseEnergyIntervalTime >= 3)
             {
-                energy -= 1;
+                Energy -= 1;
                 _IncreaseEnergyIntervalTime = 0;
             }
         }
     }
 
+    private void ReceiveDamage(float value)
+    {
+        if (Hp > 0)
+        {
+            Hp -= value;
+            CountManager.Instance.OnDamageEnemyToPlayer(value);
+        }
+        if (Hp <= 0)
+        {
+            value += Hp;
+            if (_isAlive)
+            {
+                _isAlive = false;
+                //_animator.SetTrigger("EnemyIsDead");
+                CountManager.Instance.OnDamageEnemyToPlayer(Hp);
+            }
+        }
+
+        CountManager.Instance.SetPlayerHp(Hp);
+    }
 }

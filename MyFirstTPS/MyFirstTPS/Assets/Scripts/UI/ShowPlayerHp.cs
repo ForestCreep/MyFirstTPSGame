@@ -1,25 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Weapon : MonoBehaviour
+public class ShowPlayerHp : MonoBehaviour
 {
-    public float ShotInterval = 0;
-    public int Id;
-    public string WeaponName;
-    public int BaseCapacity;
-    public int ExpandedCapacity;
-    public float DamageValue = 0;
+    private Text _playerHp;
 
     // Use this for initialization
     void Start()
     {
-
+        _playerHp = GetComponent<Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        _playerHp.text = "当前玩家血量：" + CountManager.PlayerHp;
     }
 }
