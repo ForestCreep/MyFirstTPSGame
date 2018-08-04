@@ -5,11 +5,11 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    public Transform target;
+    public Transform Target;
     private NavMeshAgent _agent;
     private Animator _animator;
     public float Hp = 100;// 生命上限
-    public Transform revivePoint;// 复活点
+    public Transform RevivePoint;// 复活点
     private bool _isAlive = true;
 
     // Use this for initialization
@@ -26,7 +26,7 @@ public class EnemyController : MonoBehaviour
         {
             if (_agent)
             {
-                _agent.SetDestination(target.position);
+                if (Target != null) _agent.SetDestination(Target.position);
                 var velocity = transform.InverseTransformDirection(_agent.desiredVelocity);
                 _animator.SetFloat("SpeedXWithoutWeapon", velocity.x);
                 _animator.SetFloat("SpeedZWithoutWeapon", velocity.z);
@@ -67,6 +67,6 @@ public class EnemyController : MonoBehaviour
         _agent.isStopped = false;
         _isAlive = true;
         Hp = 100;
-        transform.position = revivePoint.transform.position;
+        transform.position = RevivePoint.transform.position;
     }
 }
