@@ -17,6 +17,7 @@ public class MaleRoleWeaponController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        // 光标锁定
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         _animator = GetComponent<Animator>();
@@ -49,6 +50,7 @@ public class MaleRoleWeaponController : MonoBehaviour
         {
             if (weapon.name == other.name)
             {
+                // 无枪向有枪动画切换
                 _animator.SetBool("HasWeapon", true);
                 if (_currentGun)
                 {
@@ -93,28 +95,35 @@ public class MaleRoleWeaponController : MonoBehaviour
     private void Shoot()
     {
         //var ray = Camera.main.ScreenPointToRay(new Vector2(Screen.width / 2, Screen.height / 2));
+        // 射线可视化绘制
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Debug.DrawRay(ray.origin, ray.direction * 200);
         var shootSoundSource = _currentGun.GetComponent<AudioSource>();
         if (shootSoundSource)
         {
             _currentWeapon = _currentGun.GetComponent<Weapon>();
+
+            // 射击间隔必须大于等于武器最小射击间隔
             if (_currentWeapon && Time.time - _lastShootTime >= _currentWeapon.ShotInterval)
             {
                 //Debug.Log(Time.time);
                 if (_animator && UIManager.Instance.GetPlayerIsAlive())
                 {
                     shootSoundSource.Play();
+                    // 重置上一次射击时刻
                     _lastShootTime = Time.time;
                     //_animator.SetTrigger("IsShoot");
+
                     _shootFlash = _currentGun.transform.Find("MuzzleFlash");
                     if (_shootFlash)
                     {
                         _shootFlash.gameObject.SetActive(true);
+                        // 开启协程特定时间灯光特效消失
                         StartCoroutine("HideShootFlash");
                         //Invoke("HideShootFlash", shootFlashDisappearTime);
                     }
 
+                    // 射线发射
                     RaycastHit hit;
                     if (Physics.Raycast(ray, out hit))
                     {

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public float ShotInterval = 0;
-    public int Id;
-    public string WeaponName;
-    public int BaseCapacity;
-    public int ExpandedCapacity;
-    public float DamageValue = 0;
+    public float ShotInterval = 0;// 射击间隔
+    public int Id;// 武器ID
+    public string WeaponName;// 武器名
+    public int BaseCapacity;// 基础弹夹容量
+    public int ExpandedCapacity;// 扩容后弹夹容量
+    public float DamageValue = 0;// 武器伤害
 
     // Use this for initialization
     void Start()

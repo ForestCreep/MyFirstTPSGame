@@ -5,19 +5,19 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-    public Transform Target;
+    public Transform Target;// 追踪目标
     private NavMeshAgent _agent;
     private Animator _animator;
     public float Hp = 100;// 生命上限
     public Transform RevivePoint;// 复活点
-    private bool _isAlive = true;
-    public float MaxShootDistance;
-    public GameObject[] Weapons;
-    private GameObject _currentGun;
-    private Weapon _currentWeapon;
-    private float _lastShootTime;
-    private Transform _shootFlash;
-    public float ShootFlashDisappearTime = 0.05f;
+    private bool _isAlive = true;// 是否存活
+    public float MinShootDistance;// 最小射击间隔
+    public GameObject[] Weapons;// 随机生成的武器列表
+    private GameObject _currentGun;// 当前武器（不含参数）
+    private Weapon _currentWeapon;// 当前武器（含参数）
+    private float _lastShootTime;// 上一次射击时刻
+    private Transform _shootFlash;// 射击闪光特效
+    public float ShootFlashDisappearTime = 0.05f;// 射击闪光消失时间
 
     // Use this for initialization
     void Start()
@@ -28,6 +28,9 @@ public class EnemyController : MonoBehaviour
         GetWeaponRandomly();
     }
 
+    /// <summary>
+    /// 随机获取一把武器
+    /// </summary>
     private void GetWeaponRandomly()
     {
         var weaponIndex = Random.Range(0, Weapons.Length);
@@ -46,15 +49,18 @@ public class EnemyController : MonoBehaviour
     {
         if (Hp > 0)
         {
+            // 设置AI目的地
             _agent.SetDestination(Target.position);
+            // 将AI的速度有世界速度转换为本地速度
             var velocity = transform.InverseTransformDirection(_agent.desiredVelocity);
             _animator.SetFloat("SpeedXWithWeapon", velocity.x);
             _animator.SetFloat("SpeedZWithWeapon", velocity.z);
 
             // 当达到最大射程范围时可以向玩家射击
-            if (Vector3.Distance(transform.position, Target.position) <= MaxShootDistance)
+            if (Vector3.Distance(transform.position, Target.position) <= MinShootDistance)
             {
                 ShootToPlayer();
+                // 在射程范围内始终指向玩家
                 transform.LookAt(Target);
             }
         }
@@ -64,6 +70,7 @@ public class EnemyController : MonoBehaviour
     {
         var enemyPosition = transform.position;
         var targetPosition = Target.position;
+        // 获取玩家对于AI的方向
         var direction = Target.position - transform.position;
 
         // 向玩家发射射线

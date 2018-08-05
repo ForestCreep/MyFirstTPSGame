@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnWeaponManager : MonoBehaviour
 {
-    public GameObject[] SpawnableWeapons;
+    public GameObject[] SpawnableWeapons;// 用于随机生成武器的武器列表
 
     // Use this for initialization
     void Start()

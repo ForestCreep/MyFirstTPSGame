@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class HPAndEnergyController : MonoBehaviour
 {
-    public float Hp = 100;
-    public float Energy = 0;
-    private float _increaseEnergyIntervalTime = 0;
-    private float _increaseHpIntervalTime = 0;
-    private bool _isAlive = true;
+    public float Hp = 100;// 血量值
+    public float Energy = 0;// 能量值
+    private float _increaseEnergyIntervalTime = 0;// 能量增长时间间隔
+    private float _increaseHpIntervalTime = 0;// 血量增长时间间隔
+    private bool _isAlive = true;// 玩家存活状态
     private Animator _animator;
 
     // Use this for initialization

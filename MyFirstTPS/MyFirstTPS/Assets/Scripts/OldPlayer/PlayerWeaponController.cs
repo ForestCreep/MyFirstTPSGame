@@ -15,6 +15,7 @@ public class PlayerWeaponController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        // 光标锁定
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         _animator = GetComponent<Animator>();

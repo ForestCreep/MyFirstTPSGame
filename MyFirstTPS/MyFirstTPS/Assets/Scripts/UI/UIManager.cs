@@ -12,13 +12,13 @@ public class UIManager : MonoBehaviour
     public static float EnemyHp = 100;
     public static bool IsPlayerAlive;
 
-    public Text UIDeathTip;
-    public Text UIEnemyHp;
-    public Text UIPlayerHp;
-    public Text UISumPlayerToEnemy;
-    public Text UISumEnemyToPlayer;
+    public Text UIDeathTip;// 死亡提示
+    public Text UIEnemyHp;// 敌人血量
+    public Text UIPlayerHp;// 玩家血量
+    public Text UISumPlayerToEnemy;// 玩家对敌人造成的总伤害
+    public Text UISumEnemyToPlayer;// 敌人对玩家造成的总伤害
 
-    public Image UISightBead;
+    public Image UISightBead;// 准星
 
     private UIManager()
     {
