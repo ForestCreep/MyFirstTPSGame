@@ -8,12 +8,14 @@ public class HPAndEnergyController : MonoBehaviour
     public float Energy = 0;
     private float _increaseEnergyIntervalTime = 0;
     private float _increaseHpIntervalTime = 0;
-    private bool _isAlive;
+    private bool _isAlive = true;
+    private Animator _animator;
 
     // Use this for initialization
     void Start()
     {
-
+        _animator = GetComponent<Animator>();
+        UIManager.Instance.SetPlayerIsAlive(true);
     }
 
     // Update is called once per frame
@@ -215,7 +217,7 @@ public class HPAndEnergyController : MonoBehaviour
         if (Hp > 0)
         {
             Hp -= value;
-            CountManager.Instance.OnDamageEnemyToPlayer(value);
+            UIManager.Instance.OnDamageEnemyToPlayer(value);
         }
         if (Hp <= 0)
         {
@@ -223,11 +225,29 @@ public class HPAndEnergyController : MonoBehaviour
             if (_isAlive)
             {
                 _isAlive = false;
-                //_animator.SetTrigger("EnemyIsDead");
-                CountManager.Instance.OnDamageEnemyToPlayer(Hp);
+                _animator.SetTrigger("PlayerIsDead");
+                UIManager.Instance.SetPlayerIsAlive(false);
+                UIManager.Instance.OnDamageEnemyToPlayer(Hp);
+
             }
         }
 
-        CountManager.Instance.SetPlayerHp(Hp);
+        if (_isAlive)
+        {
+            UIManager.Instance.SetPlayerHp(Hp);
+        }
+        else
+        {
+            UIManager.Instance.SetPlayerHp(0);
+        }
+    }
+
+    private void OnFinishedDead()
+    {
+        //_animator.SetTrigger("PlayerIsRevived");
+        //Hp = 100;
+        //UIManager.Instance.SetPlayerHp(100);
+        //UIManager.Instance.SetPlayerIsAlive(true);
+        //_isAlive = true;
     }
 }

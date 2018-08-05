@@ -102,7 +102,7 @@ public class MaleRoleWeaponController : MonoBehaviour
             if (_currentWeapon && Time.time - _lastShootTime >= _currentWeapon.ShotInterval)
             {
                 //Debug.Log(Time.time);
-                if (_animator)
+                if (_animator && UIManager.Instance.GetPlayerIsAlive())
                 {
                     shootSoundSource.Play();
                     _lastShootTime = Time.time;

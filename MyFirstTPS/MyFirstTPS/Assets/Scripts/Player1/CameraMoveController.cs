@@ -13,6 +13,8 @@ public class CameraMoveController : MonoBehaviour
     public float SensitivityY = 180;
     public float SensitivityX = 180;
 
+    public Transform TopCameraL;
+
     // Use this for initialization
     void Start()
     {
@@ -22,11 +24,28 @@ public class CameraMoveController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var offsetX = Input.GetAxis("Mouse X");
-        var offsetY = Input.GetAxis("Mouse Y");
+        if (this.transform.parent == Player)
+        {
+            var offsetX = Input.GetAxis("Mouse X");
+            var offsetY = Input.GetAxis("Mouse Y");
 
-        CameraTransform(offsetX, offsetY);
-        BodyRotateFromAxisX();
+            if (UIManager.Instance.GetPlayerIsAlive())
+            {
+                CameraTransform(offsetX, offsetY);
+                BodyRotateFromAxisX();
+            }
+            else
+            {
+                this.transform.parent = TopCameraL;
+            }
+        }
+        else if(this.transform.parent == TopCameraL)
+        {
+            if (UIManager.Instance.GetPlayerIsAlive())
+            {
+                this.transform.parent = Player;
+            }            
+        }
     }
 
     /// <summary>

@@ -114,7 +114,7 @@ public class EnemyController : MonoBehaviour
         if (Hp > 0)
         {
             Hp -= value;
-            CountManager.Instance.OnDamagePlayerToEnemy(value);
+            UIManager.Instance.OnDamagePlayerToEnemy(value);
         }
         if (Hp <= 0)
         {
@@ -124,11 +124,18 @@ public class EnemyController : MonoBehaviour
                 _isAlive = false;
                 _animator.SetTrigger("EnemyIsDead");
                 _agent.isStopped = true;// 停止追踪玩家
-                CountManager.Instance.OnDamagePlayerToEnemy(Hp);
+                UIManager.Instance.OnDamagePlayerToEnemy(Hp);
             }
         }
 
-        CountManager.Instance.SetEnemyHp(Hp);
+        if (_isAlive)
+        {
+            UIManager.Instance.SetEnemyHp(Hp);
+        }
+        else
+        {
+            UIManager.Instance.SetEnemyHp(0);
+        }
     }
 
     private void OnFinishedDead()
@@ -136,6 +143,7 @@ public class EnemyController : MonoBehaviour
         _animator.SetTrigger("Revive");
         _isAlive = true;
         Hp = 100;
+        UIManager.Instance.SetEnemyHp(100);
         transform.position = RevivePoint.transform.position;
         _agent.isStopped = false;
     }
