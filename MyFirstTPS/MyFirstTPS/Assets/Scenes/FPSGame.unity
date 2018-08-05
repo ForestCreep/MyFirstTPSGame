@@ -1329,7 +1329,7 @@ MonoBehaviour:
   Target: {fileID: 1883736760}
   Hp: 100
   RevivePoint: {fileID: 340529123}
-  MaxShootDistance: 20
+  MinShootDistance: 20
   Weapons:
   - {fileID: 1936309358}
   - {fileID: 1464832606}
