@@ -134,4 +134,14 @@ public class MaleRoleMoveController : MonoBehaviour
             _animator.ResetTrigger("JumpBackwardWithoutWeapon");
         }
     }
+
+    private void OnAnimatorIK(int layerIndex)
+    {
+        // 获取人物看向的点，深度为10
+        var position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 10));
+        // 设置人物动画看向点
+        _animator.SetLookAtPosition(position);
+        // 设置看向权重，完全看向指定方向，权重为1
+        _animator.SetLookAtWeight(1);
+    }
 }

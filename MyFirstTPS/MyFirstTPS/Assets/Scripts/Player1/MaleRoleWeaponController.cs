@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
 public class MaleRoleWeaponController : MonoBehaviour
@@ -12,7 +10,7 @@ public class MaleRoleWeaponController : MonoBehaviour
     private float _lastShootTime = 0;// 上一次射击时间
     private Transform _shootFlash;// 射击火光位置
     private Weapon _currentWeapon;// 当前武器类
-    public GameObject BulletHole;// 弹孔
+    public GameObject[] BulletHole;// 弹孔
 
     // Use this for initialization
     void Start()
@@ -127,8 +125,15 @@ public class MaleRoleWeaponController : MonoBehaviour
                     RaycastHit hit;
                     if (Physics.Raycast(ray, out hit))
                     {
-                        //Debug.Log(hit.collider.name);
                         // 贴合弹孔
+                        var hole = BulletHolesController.Instance.GetBulletHole(hit.transform.tag);
+                        if (hole != null)
+                        {
+                            hole.transform.forward = hit.normal;
+                            hole.transform.position = hit.point;
+                            hole.transform.Rotate(0, 0, Random.Range(0, 360));
+                            Destroy(hole, 3);
+                        }
 
                         // 击中敌人使其掉血
                         hit.collider.SendMessage("ReceiveDamage", _currentWeapon.DamageValue, SendMessageOptions.DontRequireReceiver);
@@ -142,5 +147,28 @@ public class MaleRoleWeaponController : MonoBehaviour
     {
         yield return new WaitForSeconds(ShootFlashDisappearTime);
         _shootFlash.gameObject.SetActive(false);
+    }
+
+    /// <summary>
+    /// 使枪始终指向看向点
+    /// </summary>
+    /// <param name="layerIndex"></param>
+    private void OnAnimatorIK(int layerIndex)
+    {
+        if (_currentGun)
+        {
+            // 设置看向的位置
+            var pos = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 10));
+            pos = pos - _currentGun.transform.position;
+            //_currentGun.transform.right = -pos;
+            // 获取枪上的左手参考点
+            var leftHandPosRef = _currentGun.GetComponent<Weapon>().LeftHandPos;
+            // 设置左手IK位置
+            _animator.SetIKPosition(AvatarIKGoal.LeftHand, leftHandPosRef.position);
+            _animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
+            // 设置左手IK旋转
+            //_animator.SetIKRotation(AvatarIKGoal.LeftHand, leftHandPosRef.rotation);
+            //_animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
+        }
     }
 }

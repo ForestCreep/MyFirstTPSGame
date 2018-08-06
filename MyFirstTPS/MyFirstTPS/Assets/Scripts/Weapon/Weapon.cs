@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour
     public int BaseCapacity;// 基础弹夹容量
     public int ExpandedCapacity;// 扩容后弹夹容量
     public float DamageValue = 0;// 武器伤害
+    public Transform LeftHandPos;// 左手位置
 
     // Use this for initialization
     void Start()
