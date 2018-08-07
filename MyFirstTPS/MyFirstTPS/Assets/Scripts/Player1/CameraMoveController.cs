@@ -6,14 +6,11 @@ public class CameraMoveController : MonoBehaviour
 {
     public Transform PlayerNeck;// 相机围绕旋转中心点
     public Transform Player;// 玩家对象
+    public Transform TopCameraL;// 死亡时要移出去的父物体
     public float MaxAngle = 50;// 最大仰视角度
     public float MinAngle = -50;// 最大俯视角度
-
-    //public Transform playerSpine;
     public float SensitivityY = 180;// 俯仰灵敏度
     public float SensitivityX = 180;// 左右旋转灵敏度
-
-    public Transform TopCameraL;// 死亡时要移出去的父物体
 
     // Use this for initialization
     void Start()

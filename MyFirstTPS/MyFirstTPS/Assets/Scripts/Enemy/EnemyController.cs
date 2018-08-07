@@ -6,18 +6,21 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     public Transform Target;// 追踪目标
+    public Transform RevivePoint;// 复活点
+    public GameObject[] Weapons;// 随机生成的武器列表
+
+    public float ShootFlashDisappearTime = 0.05f;// 射击闪光消失时间
+    public float MinShootDistance;// 最小射击间隔
+    public float Hp = 100;// 生命上限
+
     private NavMeshAgent _agent;
     private Animator _animator;
-    public float Hp = 100;// 生命上限
-    public Transform RevivePoint;// 复活点
-    private bool _isAlive = true;// 是否存活
-    public float MinShootDistance;// 最小射击间隔
-    public GameObject[] Weapons;// 随机生成的武器列表
     private GameObject _currentGun;// 当前武器（不含参数）
     private Weapon _currentWeapon;// 当前武器（含参数）
-    private float _lastShootTime;// 上一次射击时刻
     private Transform _shootFlash;// 射击闪光特效
-    public float ShootFlashDisappearTime = 0.05f;// 射击闪光消失时间
+
+    private bool _isAlive = true;// 是否存活
+    private float _lastShootTime;// 上一次射击时刻
 
     // Use this for initialization
     void Start()

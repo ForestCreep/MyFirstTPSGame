@@ -4,13 +4,15 @@ using UnityEngine;
 public class MaleRoleWeaponController : MonoBehaviour
 {
     public GameObject[] Weapons;// 武器列表
+    public GameObject[] BulletHole;// 弹孔
     public float ShootFlashDisappearTime = 0.05f;// 枪口火光消失时间
+
+    private float _lastShootTime = 0;// 上一次射击时间
     private Animator _animator;// 人物动画
     private GameObject _currentGun;// 当前手持武器
-    private float _lastShootTime = 0;// 上一次射击时间
     private Transform _shootFlash;// 射击火光位置
     private Weapon _currentWeapon;// 当前武器类
-    public GameObject[] BulletHole;// 弹孔
+
 
     // Use this for initialization
     void Start()

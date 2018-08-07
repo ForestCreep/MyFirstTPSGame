@@ -17,7 +17,6 @@ public class UIManager : MonoBehaviour
     public Text UIPlayerHp;// 玩家血量
     public Text UISumPlayerToEnemy;// 玩家对敌人造成的总伤害
     public Text UISumEnemyToPlayer;// 敌人对玩家造成的总伤害
-
     public Image UISightBead;// 准星
 
     private UIManager()
