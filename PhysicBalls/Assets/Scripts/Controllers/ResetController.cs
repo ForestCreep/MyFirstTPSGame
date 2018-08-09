@@ -5,9 +5,6 @@ using UnityEngine;
 public class ResetController : MonoBehaviour
 {
     public bool IsLeft;
-    public Transform RightHomePos;
-    public Transform LeftHomePos;
-    public float HomeBounciness = 0.5f;
 
     // Use this for initialization
     void Start()
@@ -25,16 +22,11 @@ public class ResetController : MonoBehaviour
     {
         if (IsLeft)
         {
-            collision.transform.position = LeftHomePos.position;
+            collision.GetComponent<Ball>().Reset(true);
         }
         else
         {
-            collision.transform.position = RightHomePos.position;
+            collision.GetComponent<Ball>().Reset(false);
         }
-
-        var rg = collision.GetComponent<Rigidbody2D>();
-        rg.velocity = Vector2.zero;
-        rg.angularVelocity = 0;
-        rg.sharedMaterial.bounciness = HomeBounciness;
     }
 }

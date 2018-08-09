@@ -11,6 +11,7 @@ public class Weapon : MonoBehaviour
     public int ExpandedCapacity;// 扩容后弹夹容量
     public float DamageValue = 0;// 武器伤害
     public Transform LeftHandPos;// 左手位置
+    public Transform RightHandPos;
 
     // Use this for initialization
     void Start()

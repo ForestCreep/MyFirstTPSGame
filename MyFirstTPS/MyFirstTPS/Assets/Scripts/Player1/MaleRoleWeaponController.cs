@@ -5,6 +5,7 @@ public class MaleRoleWeaponController : MonoBehaviour
 {
     public GameObject[] Weapons;// 武器列表
     public GameObject[] BulletHole;// 弹孔
+    public ParticleSystem ShootDust;
     public float ShootFlashDisappearTime = 0.05f;// 枪口火光消失时间
 
     private float _lastShootTime = 0;// 上一次射击时间
@@ -137,6 +138,12 @@ public class MaleRoleWeaponController : MonoBehaviour
                             Destroy(hole, 3);
                         }
 
+                        var newParticleDust = Instantiate(ShootDust);
+                        newParticleDust.transform.position = hit.point;
+                        newParticleDust.transform.forward = hit.normal;
+                        newParticleDust.Play();
+                        Destroy(newParticleDust, 3);
+
                         // 击中敌人使其掉血
                         hit.collider.SendMessage("ReceiveDamage", _currentWeapon.DamageValue, SendMessageOptions.DontRequireReceiver);
                     }
@@ -159,18 +166,25 @@ public class MaleRoleWeaponController : MonoBehaviour
     {
         if (_currentGun)
         {
-            // 设置看向的位置
             var pos = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width / 2, Screen.height / 2, 10));
-            pos = pos - _currentGun.transform.position;
-            //_currentGun.transform.right = -pos;
-            // 获取枪上的左手参考点
+            var direction  = (pos - _currentGun.transform.position).normalized;
+
+            var rot = Quaternion.FromToRotation(-_currentGun.transform.right, direction);
+            _currentGun.transform.rotation = rot * _currentGun.transform.rotation;
+
             var leftHandPosRef = _currentGun.GetComponent<Weapon>().LeftHandPos;
-            // 设置左手IK位置
+
             _animator.SetIKPosition(AvatarIKGoal.LeftHand, leftHandPosRef.position);
             _animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 1);
-            // 设置左手IK旋转
-            //_animator.SetIKRotation(AvatarIKGoal.LeftHand, leftHandPosRef.rotation);
-            //_animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
+            _animator.SetIKRotation(AvatarIKGoal.LeftHand, leftHandPosRef.rotation);
+            _animator.SetIKRotationWeight(AvatarIKGoal.LeftHand, 1);
+
+            //var rightHandPos = _currentGun.GetComponent<Weapon>().RightHandPos;
+
+            //_animator.SetIKPosition(AvatarIKGoal.RightHand, rightHandPos.position);
+            //_animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
+            //_animator.SetIKRotation(AvatarIKGoal.RightHand, rightHandPos.rotation);
+            //_animator.SetIKRotationWeight(AvatarIKGoal.RightHand, 1);
         }
     }
 }
