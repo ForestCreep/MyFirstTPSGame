@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class Obstacle : MonoBehaviour
 {
     public int Hp;
+    public int HitIncreaseSise = 2;
+
     public Text TextHp;
 
     // Use this for initialization
@@ -23,8 +25,11 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Hp -= collision.gameObject.GetComponent<Ball>().Damage;
+        var damage = collision.gameObject.GetComponent<Ball>().Damage;
+        Hp -= damage;
         TextHp.text = Hp.ToString();
+
+        UIManager.Instance.AddScore(damage);
 
         if (Hp <= 0)
         {
@@ -36,7 +41,13 @@ public class Obstacle : MonoBehaviour
     public void Init(GameObject ui)
     {
         TextHp = ui.GetComponent<Text>();
-        TextHp.text = UIManager.Instance.BallCount.ToString();
+
+        if (UIManager.Instance.HitNumber % 3 == 0)
+        {
+            UIManager.Instance.HitNumber += HitIncreaseSise;
+            UIManager.Instance.HitNumber--;
+        }
+        TextHp.text = UIManager.Instance.HitNumber.ToString();
 
         UpdateUI();
     }

@@ -28,6 +28,8 @@ public class SplitProp : MonoBehaviour
         newBallRigidbody2D.velocity = oldBallRigidbody2D.velocity;
         newBallRigidbody2D.angularVelocity = oldBallRigidbody2D.angularVelocity;
 
+        UIManager.Instance.BallCount++;
+
         Destroy(gameObject);
     }
 }
