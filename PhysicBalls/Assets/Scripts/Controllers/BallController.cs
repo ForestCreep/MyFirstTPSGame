@@ -72,25 +72,13 @@ public class BallController : MonoBehaviour
             var renderer = childBall.GetComponent<SpriteRenderer>();
             if (renderer)
             {
-                renderer.color = GetRandomColor();
+                renderer.color = Color.white;
             }
-
-            var trailRenderer = childBall.GetComponent<TrailRenderer>();
-            trailRenderer.startColor = renderer.color;
-            trailRenderer.endColor = renderer.color;
 
             childBall.GetComponent<Ball>().Shoot(direction);
 
             yield return new WaitForSeconds(ShootInterval);
         }
-    }
-
-    private Color GetRandomColor()
-    {
-        var r = Random.Range(0f, 1f);
-        var g = Random.Range(0f, 1f);
-        var b = Random.Range(0f, 1f);
-        return new Color(r, g, b);
     }
 
     public bool CheckIfAllBallsAreStopped()
