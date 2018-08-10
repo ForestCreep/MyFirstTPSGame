@@ -25,6 +25,8 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        collision.gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+
         var damage = collision.gameObject.GetComponent<Ball>().Damage;
         Hp -= damage;
         TextHp.text = Hp.ToString();

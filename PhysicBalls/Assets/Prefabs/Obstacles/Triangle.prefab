@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 60336016253774990}
   - component: {fileID: 114105641028694690}
   m_Layer: 0
-  m_Name: TriangleBall
+  m_Name: Triangle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,6 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 2
+  HitIncreaseSise: 2
   TextHp: {fileID: 114735078116301766, guid: 9466872ac19ec544c9c4ab7b32d5a979, type: 2}
 --- !u!212 &212356134402895416
 SpriteRenderer:

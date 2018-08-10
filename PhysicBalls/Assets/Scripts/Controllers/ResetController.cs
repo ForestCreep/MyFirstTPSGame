@@ -23,10 +23,12 @@ public class ResetController : MonoBehaviour
         if (IsLeft)
         {
             collision.GetComponent<Ball>().Reset(true);
+            collision.GetComponent<TrailRenderer>().enabled = false;
         }
         else
         {
             collision.GetComponent<Ball>().Reset(false);
+            collision.GetComponent<TrailRenderer>().enabled = false;
         }
     }
 }

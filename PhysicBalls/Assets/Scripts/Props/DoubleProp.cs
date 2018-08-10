@@ -5,11 +5,12 @@ using UnityEngine;
 public class DoubleProp : MonoBehaviour
 {
     public float BiggerSize = 1.2f;
+    public static DoubleProp Instance;
 
     // Use this for initialization
     void Start()
     {
-
+        Instance = this;
     }
 
     // Update is called once per frame
