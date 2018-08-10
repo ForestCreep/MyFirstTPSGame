@@ -11,6 +11,10 @@ public class UIManager : MonoBehaviour
 
     public static UIManager Instance;
 
+    private float r = 0f; // + 3  1  - 6
+    private float g = 1f; // - 2  0  + 5
+    private float b = 0f; // + 1  1  - 4
+
     // Use this for initialization
     void Start()
     {
@@ -31,13 +35,54 @@ public class UIManager : MonoBehaviour
 
     private Color GetColor()
     {
-        float r = 0f;
-        float g = 1f;
-        float b = 0f;
-
-        //r += Time.deltaTime * 0.01f;
-        //g -= Time.deltaTime * 0.01f;
-        //b += Time.deltaTime * 0.01f;
+        if (r == 0 && g == 1 && b != 1)
+        {
+            b += Time.deltaTime;
+            if (b > 1)
+            {
+                b = 1;
+            }
+        }
+        else if (r == 0 && b == 1 && g != 0)
+        {
+            g -= Time.deltaTime;
+            if (g < 0)
+            {
+                g = 0;
+            }
+        }
+        else if (g == 0 && b == 1 && r != 1)
+        {
+            r += Time.deltaTime;
+            if (r > 1)
+            {
+                r = 1;
+            }
+        }
+        else if (r == 1 & g == 0 && b != 0)
+        {
+            b -= Time.deltaTime;
+            if (b < 0)
+            {
+                b = 0;
+            }
+        }
+        else if (r == 1 & b == 0 && g != 1)
+        {
+            g += Time.deltaTime;
+            if (g > 1)
+            {
+                g = 1;
+            }
+        }
+        else if (g == 1 && b == 0 && r != 0)
+        {
+            r -= Time.deltaTime;
+            if (r < 0)
+            {
+                r = 0;
+            }
+        }
 
         return new Color(r, g, b);
     }
