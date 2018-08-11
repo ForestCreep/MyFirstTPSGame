@@ -87,6 +87,10 @@ public class ObstacleManager : MonoBehaviour
     /// </summary>
     private void BuildProp()
     {
+        // 有Bug
+        // 生成后，抬升障碍物会覆盖道具
+        // 应在抬升时加以判断
+
         if (UIManager.Instance.BallCount % 3 == 0)
         {
             var index = Random.Range(0, PropsPrefabs.Length);
