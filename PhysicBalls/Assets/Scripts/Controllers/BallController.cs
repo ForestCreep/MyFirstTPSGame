@@ -109,7 +109,8 @@ public class BallController : MonoBehaviour
             ObstacleManager.Instance.UpliftOldObstacles();
 
             var newBall = Instantiate(transform.GetChild(0), gameObject.transform);
-            newBall.transform.position = newBall.GetComponent<Ball>().LeftHomePos.position;
+            var pos = newBall.GetComponent<Ball>().LeftHomePos.position;
+            newBall.transform.position = new Vector2(pos.x, pos.y + 0.05f);
             newBall.GetComponent<SpriteRenderer>().color = Color.yellow;
             newBall.GetComponent<TrailRenderer>().enabled = false;
 

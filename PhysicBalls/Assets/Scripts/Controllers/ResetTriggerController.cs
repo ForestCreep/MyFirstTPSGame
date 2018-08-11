@@ -35,11 +35,11 @@ public class ResetTriggerController : MonoBehaviour
         rg.constraints = RigidbodyConstraints2D.None;
         if (IsLeft)
         {
-            rg.AddForce(new Vector2(collision.transform.position.x + 5, collision.transform.position.y));
+            rg.AddForce(new Vector2(collision.transform.position.x + ForceSize, collision.transform.position.y));
         }
         else
         {
-            rg.AddForce(new Vector2(collision.transform.position.x - 5, collision.transform.position.y));
+            rg.AddForce(new Vector2(collision.transform.position.x - ForceSize, collision.transform.position.y));
         }
     }
 }
