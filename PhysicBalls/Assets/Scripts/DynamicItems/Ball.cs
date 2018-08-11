@@ -16,6 +16,7 @@ public class Ball : MonoBehaviour
     public int Damage = 1;
 
     private Rigidbody2D _rigidbody2D;
+    private bool _isHasCollision = false;
 
     // Use this for initialization
     void Start()
@@ -58,6 +59,8 @@ public class Ball : MonoBehaviour
         InitBeforeShoot();
         IsRunning = true;
         _rigidbody2D.gravityScale = 0;
+        _isHasCollision = false;
+
         _rigidbody2D.AddForce(direction * ForceCoefficient, ForceMode2D.Impulse);
     }
 
@@ -65,5 +68,15 @@ public class Ball : MonoBehaviour
     void Update()
     {
 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!_isHasCollision)
+        {
+            gameObject.GetComponent<Rigidbody2D>().gravityScale = 1;
+        }
+
+        _isHasCollision = true;
     }
 }
