@@ -59,6 +59,8 @@ public class Ball : MonoBehaviour
         InitBeforeShoot();
         IsRunning = true;
         _rigidbody2D.gravityScale = 0;
+        _rigidbody2D.constraints = RigidbodyConstraints2D.None;
+
         _isHasCollision = false;
 
         _rigidbody2D.AddForce(direction * ForceCoefficient, ForceMode2D.Impulse);

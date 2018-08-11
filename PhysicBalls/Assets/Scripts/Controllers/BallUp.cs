@@ -20,6 +20,11 @@ public class BallUp : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         var rg = collision.GetComponent<Rigidbody2D>();
-        rg.AddForce(new Vector2(collision.transform.position.x, collision.transform.position.y + 35), ForceMode2D.Impulse);
+
+        rg.velocity = Vector2.zero;
+        rg.angularVelocity = 0;
+        rg.gravityScale = 1;
+        rg.constraints = RigidbodyConstraints2D.FreezePositionX;
+        rg.AddForce(new Vector2(collision.transform.position.x, collision.transform.position.y + 17f), ForceMode2D.Impulse);
     }
 }

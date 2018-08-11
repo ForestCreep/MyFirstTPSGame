@@ -110,6 +110,8 @@ public class BallController : MonoBehaviour
 
             var newBall = Instantiate(transform.GetChild(0), gameObject.transform);
             newBall.transform.position = newBall.GetComponent<Ball>().LeftHomePos.position;
+            newBall.GetComponent<SpriteRenderer>().color = Color.yellow;
+            newBall.GetComponent<TrailRenderer>().enabled = false;
 
             UIManager.Instance.BallCount++;
         }

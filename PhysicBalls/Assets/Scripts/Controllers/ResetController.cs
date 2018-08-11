@@ -24,11 +24,13 @@ public class ResetController : MonoBehaviour
         {
             collision.GetComponent<Ball>().Reset(true);
             collision.GetComponent<TrailRenderer>().enabled = false;
+            collision.GetComponent<SpriteRenderer>().color = Color.yellow;
         }
         else
         {
             collision.GetComponent<Ball>().Reset(false);
             collision.GetComponent<TrailRenderer>().enabled = false;
+            collision.GetComponent<SpriteRenderer>().color = Color.yellow;
         }
     }
 }
