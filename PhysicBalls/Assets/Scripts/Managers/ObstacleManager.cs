@@ -6,20 +6,21 @@ using UnityEngine.UI;
 
 public class ObstacleManager : MonoBehaviour
 {
-    public GameObject[] ObstaclePrefabs;
-    public GameObject UIText;
-    public GameObject[] PropsPrefabs;
+    public GameObject[] ObstaclePrefabs;// 障碍物预制体
+    public GameObject UIText;// 血量显示预制体
+    public GameObject[] PropsPrefabs;// 道具预制体
 
-    public Transform UICanvas;
-    public Transform ObstaclesParent;
+    public Transform UICanvas;// 画布
+    public Transform ObstaclesParent;// 障碍物父节点
 
-    public float[] XPositions = { 0.5f, 1.5f, -1.5f, -0.5f };
-    public float MinY = -3.7f;
-    public float MaxY = 2.3f;
+    public float[] XPositions = { 0.5f, 1.5f, -1.5f, -0.5f };// 障碍物X坐标
+    public float MinY = -3.7f;// 障碍物最低点
+    public float MaxY = 2.3f;// 障碍物可升至的最高点
 
     public static ObstacleManager Instance;
 
     // private Dictionary<float, float>[,] _positionsMatrix = new Dictionary<float, float>[7, 4];
+    // 所有位置坐标
     private List<Vector3> _allPosMat = new List<Vector3>()
     {
         new Vector3(-1.5f, 2.3f),new Vector3(-0.5f, 2.3f),new Vector3(0.5f, 2.3f),new Vector3(1.5f, 2.3f),
@@ -35,11 +36,10 @@ public class ObstacleManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        // 初始化
         Instance = this;
         BuildObstacle();
         UIManager.Instance.BallCount++;
-
-        var test = _allPosMat[1];
     }
 
     // Update is called once per frame
@@ -48,6 +48,9 @@ public class ObstacleManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// 建造障碍物
+    /// </summary>
     public void BuildObstacle()
     {
         foreach (var positionX in XPositions)
@@ -78,7 +81,10 @@ public class ObstacleManager : MonoBehaviour
 
         UIManager.Instance.HitNumber++;
     }
-
+    
+    /// <summary>
+    /// 建造道具
+    /// </summary>
     private void BuildProp()
     {
         if (UIManager.Instance.BallCount % 3 == 0)
@@ -104,6 +110,10 @@ public class ObstacleManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 获取一个随机颜色
+    /// </summary>
+    /// <returns></returns>
     private Color GetRandomColor()
     {
         var r = Random.Range(0f, 1f);
@@ -112,12 +122,19 @@ public class ObstacleManager : MonoBehaviour
         return new Color(r, g, b);
     }
 
+    /// <summary>
+    /// 建造UIText
+    /// </summary>
+    /// <returns></returns>
     public GameObject BuildObstacleText()
     {
         var ui = Instantiate(UIText, UICanvas);
         return ui;
     }
 
+    /// <summary>
+    /// 抬升已有障碍物
+    /// </summary>
     public void UpliftOldObstacles()
     {
         foreach (Transform item in transform)
@@ -140,6 +157,9 @@ public class ObstacleManager : MonoBehaviour
         BuildProp();
     }
 
+    /// <summary>
+    /// 游戏结束操作
+    /// </summary>
     private void OnGameOver()
     {
         SceneManager.LoadScene("PhysicsBall");

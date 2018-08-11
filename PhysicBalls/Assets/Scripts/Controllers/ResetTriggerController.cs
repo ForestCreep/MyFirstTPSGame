@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ResetTriggerController : MonoBehaviour
 {
-    public bool IsLeft;
+    public bool IsLeft;// 左或右上侧触发器
     public float ForceSize = 5;
 
     // Use this for initialization
